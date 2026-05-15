@@ -1,904 +1,773 @@
-<!DOCTYPE html><html lang="ru">
+<!DOCTYPE html>
+<html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Выездной тимбилдинг глубокого восстановления</title>
-  <meta name="description" content="Выездные корпоративные практики: крепкая йога, научное объяснение усталости и зажимов, шавасана под живую этническую музыку." />
-  <style>
-    :root {
-      --bg: #f8f1e8;
-      --bg-soft: #fff9f0;
-      --text: #25221f;
-      --muted: #6d6258;
-      --accent: #b86f45;
-      --accent-dark: #7f432c;
-      --green: #506b53;
-      --sand: #e6d2bd;
-      --cream: #fffaf3;
-      --shadow: 0 24px 80px rgba(65, 41, 24, 0.14);
-      --radius: 28px;
-    }* { box-sizing: border-box; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  margin: 0;
-  font-family: Inter, Arial, sans-serif;
-  color: var(--text);
-  background:
-    radial-gradient(circle at 15% 10%, rgba(184, 111, 69, 0.18), transparent 28%),
-    radial-gradient(circle at 82% 8%, rgba(80, 107, 83, 0.16), transparent 30%),
-    linear-gradient(180deg, #fff8ef 0%, var(--bg) 55%, #efe0d0 100%);
-  line-height: 1.55;
-}
-
-a { color: inherit; text-decoration: none; }
-
-.container {
-  width: min(1160px, calc(100% - 40px));
-  margin: 0 auto;
-}
-
-.nav {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  backdrop-filter: blur(18px);
-  background: rgba(255, 248, 239, 0.75);
-  border-bottom: 1px solid rgba(127, 67, 44, 0.12);
-}
-
-.nav-inner {
-  min-height: 76px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  font-size: 18px;
-}
-
-.logo-mark {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  background: conic-gradient(from 160deg, var(--accent), #e3b180, var(--green), var(--accent));
-  box-shadow: 0 12px 30px rgba(184, 111, 69, 0.25);
-}
-
-.logo-mark::after {
-  content: "";
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: var(--cream);
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  font-size: 14px;
-  color: var(--muted);
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  min-height: 52px;
-  padding: 0 24px;
-  border-radius: 999px;
-  border: 0;
-  background: var(--text);
-  color: white;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 16px 40px rgba(37, 34, 31, 0.18);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.btn:hover { transform: translateY(-2px); box-shadow: 0 20px 46px rgba(37, 34, 31, 0.24); }
-
-.btn.secondary {
-  background: rgba(255, 255, 255, 0.65);
-  color: var(--text);
-  border: 1px solid rgba(37, 34, 31, 0.12);
-  box-shadow: none;
-}
-
-.hero {
-  position: relative;
-  padding: 92px 0 88px;
-  overflow: hidden;
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 52px;
-  align-items: center;
-}
-
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 14px;
-  border-radius: 999px;
-  background: rgba(184, 111, 69, 0.12);
-  color: var(--accent-dark);
-  font-weight: 800;
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-h1 {
-  margin: 22px 0 22px;
-  font-size: clamp(44px, 6vw, 82px);
-  line-height: 0.95;
-  letter-spacing: -0.075em;
-}
-
-.lead {
-  max-width: 620px;
-  font-size: 21px;
-  color: var(--muted);
-  margin: 0 0 30px;
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-bottom: 32px;
-}
-
-.stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  max-width: 650px;
-}
-
-.stat {
-  padding: 18px;
-  background: rgba(255, 250, 243, 0.78);
-  border: 1px solid rgba(127, 67, 44, 0.1);
-  border-radius: 22px;
-}
-
-.stat strong { display: block; font-size: 24px; letter-spacing: -0.04em; }
-.stat span { color: var(--muted); font-size: 14px; }
-
-.hero-card {
-  position: relative;
-  min-height: 560px;
-  border-radius: 44px;
-  padding: 26px;
-  background:
-    linear-gradient(145deg, rgba(255,255,255,0.7), rgba(255,255,255,0.28)),
-    radial-gradient(circle at 50% 30%, rgba(184,111,69,0.22), transparent 35%),
-    linear-gradient(180deg, #f3ddc6, #d5b89b);
-  box-shadow: var(--shadow);
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.55);
-}
-
-.sun {
-  position: absolute;
-  width: 220px;
-  height: 220px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #f8d59c 0%, #d98b56 58%, rgba(217,139,86,0) 70%);
-  top: 54px;
-  right: 66px;
-  opacity: 0.9;
-}
-
-.person {
-  position: absolute;
-  left: 50%;
-  bottom: 84px;
-  transform: translateX(-50%);
-  width: 330px;
-  height: 220px;
-}
-
-.person .mat {
-  position: absolute;
-  left: 5px;
-  right: 5px;
-  bottom: 0;
-  height: 42px;
-  border-radius: 999px;
-  background: rgba(80, 107, 83, 0.88);
-  box-shadow: 0 22px 50px rgba(80,107,83,0.3);
-}
-
-.person .body {
-  position: absolute;
-  width: 210px;
-  height: 78px;
-  left: 58px;
-  bottom: 48px;
-  border-radius: 70px 70px 42px 42px;
-  background: var(--accent-dark);
-  transform: rotate(-2deg);
-}
-
-.person .head {
-  position: absolute;
-  width: 54px;
-  height: 54px;
-  left: 30px;
-  bottom: 72px;
-  border-radius: 50%;
-  background: #74402c;
-}
-
-.person .leg1, .person .leg2 {
-  position: absolute;
-  height: 28px;
-  border-radius: 999px;
-  background: #e6b58d;
-  bottom: 46px;
-}
-
-.person .leg1 { width: 145px; right: 2px; transform: rotate(8deg); }
-.person .leg2 { width: 130px; right: 35px; transform: rotate(-16deg); bottom: 75px; }
-
-.music-orbits {
-  position: absolute;
-  inset: 40px;
-  pointer-events: none;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sound Rest — расслабляющий тимбилдинг</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Arial, sans-serif;
+background:#f8f5f0;
+color:#111;
+line-height:1.5;
+}
+
+.container{
+width:92%;
+max-width:1200px;
+margin:auto;
+}
+
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+background:rgba(255,255,255,0.9);
+backdrop-filter:blur(12px);
+z-index:100;
+border-bottom:1px solid rgba(0,0,0,0.05);
+}
+
+.nav{
+height:80px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:28px;
+font-weight:700;
+}
+
+.menu{
+display:flex;
+gap:30px;
+}
+
+.menu a{
+text-decoration:none;
+color:#333;
+font-size:15px;
+}
+
+.hero{
+padding-top:140px;
+padding-bottom:100px;
+background:
+radial-gradient(circle at top right,#dde8ef,transparent 30%),
+radial-gradient(circle at left,#eadcc8,transparent 35%);
+}
+
+.hero-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:center;
+}
+
+.hero h1{
+font-size:72px;
+line-height:0.95;
+margin-bottom:30px;
+}
+
+.hero p{
+font-size:24px;
+color:#444;
+margin-bottom:35px;
+}
+
+.buttons{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:18px 34px;
+border-radius:999px;
+text-decoration:none;
+font-weight:bold;
+display:inline-block;
+transition:0.2s;
+}
+
+.btn-dark{
+background:#111;
+color:white;
+}
+
+.btn-light{
+border:1px solid #999;
+color:#111;
+}
+
+.btn:hover{
+transform:translateY(-2px);
+}
+
+.circle{
+width:500px;
+height:500px;
+border-radius:50%;
+background:
+linear-gradient(145deg,#d7c0a1,#8f6748 50%,#566f5a);
+margin:auto;
+position:relative;
+overflow:hidden;
+box-shadow:0 30px 90px rgba(0,0,0,0.18);
+}
+
+.circle:before{
+content:'';
+position:absolute;
+width:250px;
+height:250px;
+border-radius:50%;
+border:22px solid rgba(255,255,255,0.6);
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+}
+
+section{
+padding:110px 0;
+}
+
+.center{
+text-align:center;
+max-width:850px;
+margin:auto;
+margin-bottom:60px;
+}
+
+h2{
+font-size:64px;
+line-height:1;
+margin-bottom:25px;
+}
+
+.subtitle{
+font-size:24px;
+color:#555;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+}
+
+.card{
+background:white;
+padding:35px;
+border-radius:32px;
+box-shadow:0 20px 60px rgba(0,0,0,0.06);
+}
+
+.number{
+width:55px;
+height:55px;
+border-radius:50%;
+background:#111;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
+margin-bottom:25px;
+}
+
+.card h3{
+font-size:28px;
+margin-bottom:15px;
+}
+
+.card p{
+color:#666;
+font-size:18px;
+}
+
+.soft{
+background:white;
+}
+
+.split{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:70px;
+align-items:center;
+}
+
+.round{
+width:450px;
+height:450px;
+border-radius:50%;
+background:
+linear-gradient(145deg,#cba57f,#566f5a);
+margin:auto;
+box-shadow:0 25px 80px rgba(0,0,0,0.15);
+}
+
+.text p{
+font-size:22px;
+margin-bottom:20px;
+color:#444;
+}
+
+.quote{
+padding:35px;
+background:#fff7ed;
+border-left:4px solid #8f6748;
+border-radius:0 30px 30px 0;
+font-size:26px;
+margin-top:30px;
+}
+
+.program{
+display:grid;
+gap:20px;
+max-width:950px;
+margin:auto;
+}
+
+.step{
+background:white;
+padding:30px;
+border-radius:28px;
+display:grid;
+grid-template-columns:150px 1fr;
+gap:25px;
+}
+
+.time{
+font-weight:bold;
+color:#8f6748;
+}
+
+.step h3{
+font-size:30px;
+margin-bottom:10px;
+}
+
+.step p{
+color:#666;
+font-size:18px;
+}
+
+.dark{
+background:#101010;
+color:white;
+}
+
+.dark .subtitle{
+color:rgba(255,255,255,0.7);
+}
+
+.grid2{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:22px;
+}
+
+.dark-card{
+background:rgba(255,255,255,0.06);
+padding:35px;
+border-radius:30px;
+}
+
+.dark-card h3{
+font-size:28px;
+margin-bottom:15px;
 }
 
-.orbit {
-  position: absolute;
-  border: 1px solid rgba(255, 250, 243, 0.55);
-  border-radius: 50%;
-  animation: float 7s ease-in-out infinite;
-}
-
-.orbit:nth-child(1) { width: 120px; height: 120px; left: 40px; top: 70px; }
-.orbit:nth-child(2) { width: 92px; height: 92px; right: 38px; bottom: 150px; animation-delay: -2s; }
-.orbit:nth-child(3) { width: 62px; height: 62px; left: 110px; bottom: 205px; animation-delay: -3.5s; }
+.dark-card p{
+color:rgba(255,255,255,0.72);
+font-size:18px;
+}
+
+.instruments{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:16px;
+}
+
+.instrument{
+background:white;
+padding:28px;
+border-radius:30px;
+text-align:center;
+}
+
+.icon{
+width:90px;
+height:90px;
+border-radius:50%;
+margin:auto;
+margin-bottom:20px;
+background:
+linear-gradient(145deg,#e8c18e,#5d4635);
+}
+
+.instrument h3{
+font-size:22px;
+margin-bottom:10px;
+}
+
+.instrument p{
+font-size:15px;
+color:#666;
+}
+
+.results{
+display:grid;
+gap:16px;
+max-width:900px;
+margin:auto;
+}
+
+.result{
+background:white;
+padding:24px;
+border-radius:24px;
+font-size:20px;
+display:flex;
+gap:18px;
+align-items:flex-start;
+}
+
+.check{
+width:40px;
+height:40px;
+border-radius:50%;
+background:#566f5a;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
+}
+
+.contacts{
+background:
+linear-gradient(180deg,#fff,#f7f4ef);
+}
+
+.contact-box{
+background:#111;
+color:white;
+padding:70px;
+border-radius:42px;
+text-align:center;
+max-width:1000px;
+margin:auto;
+}
 
-.instrument-tag {
-  position: absolute;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 14px;
-  border-radius: 999px;
-  background: rgba(255, 250, 243, 0.78);
-  color: var(--accent-dark);
-  font-weight: 800;
-  font-size: 13px;
-  box-shadow: 0 12px 30px rgba(65,41,24,0.12);
+.contact-box p{
+font-size:22px;
+color:rgba(255,255,255,0.7);
+margin-bottom:35px;
 }
-
-.tag-1 { left: 28px; bottom: 34px; }
-.tag-2 { right: 28px; top: 28px; }
-.tag-3 { right: 42px; bottom: 64px; }
-
-@keyframes float {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-16px) scale(1.04); }
-}
-
-section { padding: 88px 0; }
-
-.section-head {
-  max-width: 760px;
-  margin-bottom: 38px;
-}
-
-.section-head h2 {
-  margin: 0 0 16px;
-  font-size: clamp(34px, 4vw, 58px);
-  line-height: 1;
-  letter-spacing: -0.06em;
-}
-
-.section-head p {
-  margin: 0;
-  font-size: 19px;
-  color: var(--muted);
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-}
 
-.card {
-  padding: 28px;
-  border-radius: var(--radius);
-  background: rgba(255, 250, 243, 0.78);
-  border: 1px solid rgba(127, 67, 44, 0.1);
-  box-shadow: 0 18px 50px rgba(65,41,24,0.08);
+.contact-buttons{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+margin-bottom:30px;
 }
 
-.icon {
-  width: 58px;
-  height: 58px;
-  border-radius: 20px;
-  display: grid;
-  place-items: center;
-  background: rgba(184, 111, 69, 0.14);
-  color: var(--accent-dark);
-  font-size: 26px;
-  margin-bottom: 22px;
-}
-
-.card h3 {
-  margin: 0 0 12px;
-  font-size: 23px;
-  letter-spacing: -0.03em;
-}
+.contact-buttons .btn-dark{
+background:white;
+color:#111;
+}
+
+.contact-buttons .btn-light{
+color:white;
+border:1px solid rgba(255,255,255,0.3);
+}
+
+footer{
+padding:35px;
+text-align:center;
+font-size:14px;
+color:#666;
+}
 
-.card p { margin: 0; color: var(--muted); }
+@media(max-width:900px){
 
-.program {
-  background: rgba(255, 250, 243, 0.52);
-  border-top: 1px solid rgba(127, 67, 44, 0.08);
-  border-bottom: 1px solid rgba(127, 67, 44, 0.08);
+.hero-grid,
+.split,
+.cards,
+.grid2,
+.instruments{
+grid-template-columns:1fr;
 }
 
-.timeline {
-  display: grid;
-  gap: 16px;
+.hero h1{
+font-size:48px;
 }
 
-.step {
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 24px;
-  align-items: start;
-  padding: 24px;
-  border-radius: 26px;
-  background: var(--cream);
-  border: 1px solid rgba(127, 67, 44, 0.1);
-}
-
-.time {
-  font-size: 15px;
-  font-weight: 900;
-  color: var(--accent-dark);
-  padding: 8px 12px;
-  border-radius: 999px;
-  background: rgba(184, 111, 69, 0.12);
-  text-align: center;
+h2{
+font-size:42px;
 }
 
-.step h3 { margin: 0 0 8px; font-size: 22px; }
-.step p { margin: 0; color: var(--muted); }
+.circle,
+.round{
+width:320px;
+height:320px;
+}
 
-.science-grid {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 28px;
-  align-items: stretch;
+.step{
+grid-template-columns:1fr;
 }
 
-.quote-card {
-  position: relative;
-  padding: 34px;
-  border-radius: 34px;
-  color: white;
-  background:
-    radial-gradient(circle at 20% 15%, rgba(255,255,255,0.22), transparent 30%),
-    linear-gradient(145deg, var(--green), #24372b);
-  box-shadow: var(--shadow);
-  overflow: hidden;
-}
-
-.quote-card h3 {
-  margin: 0 0 14px;
-  font-size: 32px;
-  line-height: 1.05;
-  letter-spacing: -0.05em;
+.contact-box{
+padding:40px 25px;
 }
-
-.quote-card p { color: rgba(255,255,255,0.78); margin: 0; }
-
-.sound-waves {
-  margin-top: 34px;
-  height: 150px;
-  display: flex;
-  align-items: center;
-  gap: 9px;
-}
-
-.wave {
-  width: 12px;
-  border-radius: 999px;
-  background: rgba(255, 250, 243, 0.72);
-  animation: pulse 1.8s ease-in-out infinite;
-}
-
-.wave:nth-child(1) { height: 40px; }
-.wave:nth-child(2) { height: 86px; animation-delay: -0.2s; }
-.wave:nth-child(3) { height: 120px; animation-delay: -0.5s; }
-.wave:nth-child(4) { height: 68px; animation-delay: -0.8s; }
-.wave:nth-child(5) { height: 104px; animation-delay: -1s; }
-.wave:nth-child(6) { height: 48px; animation-delay: -1.2s; }
-.wave:nth-child(7) { height: 92px; animation-delay: -1.4s; }
-.wave:nth-child(8) { height: 58px; animation-delay: -1.6s; }
-
-@keyframes pulse {
-  0%, 100% { transform: scaleY(0.7); opacity: 0.58; }
-  50% { transform: scaleY(1.08); opacity: 1; }
-}
-
-.accordion-like {
-  display: grid;
-  gap: 14px;
+
 }
-
-.science-item {
-  padding: 24px;
-  border-radius: 24px;
-  background: rgba(255, 250, 243, 0.78);
-  border: 1px solid rgba(127, 67, 44, 0.1);
-}
-
-.science-item strong { display: block; margin-bottom: 8px; font-size: 19px; }
-.science-item span { color: var(--muted); }
-
-.instruments {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 16px;
-}
-
-.instrument {
-  min-height: 190px;
-  padding: 18px;
-  border-radius: 28px;
-  background: var(--cream);
-  border: 1px solid rgba(127, 67, 44, 0.1);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  overflow: hidden;
-}
-
-.instrument-visual {
-  height: 92px;
-  display: grid;
-  place-items: center;
-}
-
-.circle-instrument {
-  width: 74px;
-  height: 74px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 28%, #fff0bd, #b86f45 50%, #5e3525 78%);
-  box-shadow: inset 0 0 0 8px rgba(255,255,255,0.18), 0 12px 26px rgba(65,41,24,0.14);
-}
-
-.bowl {
-  width: 90px;
-  height: 45px;
-  border-radius: 0 0 90px 90px;
-  background: linear-gradient(180deg, #f9e5bd, #a26c42);
-  box-shadow: inset 0 8px 0 rgba(255,255,255,0.45), 0 12px 24px rgba(65,41,24,0.12);
-}
-
-.harp {
-  width: 70px;
-  height: 88px;
-  border-left: 8px solid #b86f45;
-  border-bottom: 8px solid #b86f45;
-  border-radius: 0 0 0 38px;
-  position: relative;
-}
-
-.harp::after {
-  content: "";
-  position: absolute;
-  inset: 10px 10px 6px 16px;
-  background: repeating-linear-gradient(90deg, rgba(127,67,44,0.42) 0 2px, transparent 2px 10px);
-  border-radius: 12px;
-}
-
-.drum {
-  width: 78px;
-  height: 78px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #f5dfc5 0 46%, #7f432c 47% 55%, #e7b27d 56%);
-  box-shadow: 0 12px 24px rgba(65,41,24,0.13);
-}
-
-.bell {
-  width: 56px;
-  height: 80px;
-  border-radius: 28px 28px 12px 12px;
-  background: linear-gradient(180deg, #f2d28e, #b86f45);
-  position: relative;
-}
-
-.bell::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -8px;
-  width: 18px;
-  height: 18px;
-  transform: translateX(-50%);
-  border-radius: 50%;
-  background: #7f432c;
-}
-
-.instrument h3 { margin: 0 0 6px; font-size: 18px; }
-.instrument p { margin: 0; color: var(--muted); font-size: 14px; }
-
-.result {
-  padding: 56px;
-  border-radius: 42px;
-  background:
-    linear-gradient(145deg, rgba(255,255,255,0.78), rgba(255,255,255,0.42)),
-    radial-gradient(circle at 85% 15%, rgba(80,107,83,0.18), transparent 34%),
-    var(--cream);
-  box-shadow: var(--shadow);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 34px;
-  align-items: center;
-}
-
-.result h2 {
-  margin: 0 0 16px;
-  font-size: clamp(34px, 4vw, 58px);
-  line-height: 1;
-  letter-spacing: -0.06em;
-}
-
-.check-list {
-  display: grid;
-  gap: 14px;
-  margin-top: 24px;
-}
-
-.check {
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-  color: var(--muted);
-}
-
-.check::before {
-  content: "✓";
-  flex: 0 0 26px;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: rgba(80,107,83,0.15);
-  color: var(--green);
-  display: grid;
-  place-items: center;
-  font-weight: 900;
-}
-
-.cta {
-  padding-bottom: 110px;
-}
-
-.cta-box {
-  text-align: center;
-  padding: 70px 28px;
-  border-radius: 44px;
-  background:
-    radial-gradient(circle at 50% 10%, rgba(255,255,255,0.22), transparent 36%),
-    linear-gradient(145deg, #2d241f, #6b3a29);
-  color: white;
-  box-shadow: var(--shadow);
-}
-
-.cta-box h2 {
-  max-width: 820px;
-  margin: 0 auto 18px;
-  font-size: clamp(36px, 5vw, 68px);
-  line-height: 0.98;
-  letter-spacing: -0.065em;
-}
-
-.cta-box p {
-  max-width: 680px;
-  margin: 0 auto 30px;
-  color: rgba(255,255,255,0.76);
-  font-size: 19px;
-}
-
-.cta-box .btn {
-  background: #fffaf3;
-  color: #2d241f;
-  box-shadow: 0 20px 46px rgba(0,0,0,0.22);
-}
-
-footer {
-  padding: 34px 0;
-  color: var(--muted);
-  border-top: 1px solid rgba(127, 67, 44, 0.1);
-}
-
-.footer-inner {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-  font-size: 14px;
-}
-
-@media (max-width: 920px) {
-  .hero-grid, .science-grid, .result { grid-template-columns: 1fr; }
-  .cards { grid-template-columns: 1fr; }
-  .instruments { grid-template-columns: repeat(2, 1fr); }
-  .nav-links { display: none; }
-  .hero-card { min-height: 480px; }
-  .stats { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 560px) {
-  .container { width: min(100% - 24px, 1160px); }
-  .hero { padding-top: 56px; }
-  section { padding: 62px 0; }
-  .hero-actions { flex-direction: column; }
-  .btn { width: 100%; }
-  .step { grid-template-columns: 1fr; }
-  .instruments { grid-template-columns: 1fr; }
-  .result { padding: 30px; }
-  .hero-card { border-radius: 30px; min-height: 420px; }
-  .person { transform: translateX(-50%) scale(0.78); }
-  .instrument-tag { font-size: 12px; }
-  .tag-3 { display: none; }
-}
-
-  </style>
+
+</style>
 </head>
+
 <body>
-  <nav class="nav">
-    <div class="container nav-inner">
-      <a class="logo" href="#top" aria-label="На главную">
-        <span class="logo-mark"></span>
-        <span>Reset Team</span>
-      </a>
-      <div class="nav-links">
-        <a href="#format">Формат</a>
-        <a href="#program">Программа</a>
-        <a href="#science">Почему работает</a>
-        <a href="#contact">Заявка</a>
-      </div>
-      <a class="btn" href="#contact">Обсудить мероприятие</a>
-    </div>
-  </nav>  <main id="top">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow">Выездной тимбилдинг восстановления</div>
-          <h1>Сильная практика, глубокий отдых и живая музыка</h1>
-          <p class="lead">Мы приезжаем к вашей команде и проводим телесный корпоративный формат: крепкая йога, понятное объяснение стресса и мышечных зажимов, а затем час шавасаны под живые этнические инструменты.</p>
-          <div class="hero-actions">
-            <a class="btn" href="#contact">Заказать выезд</a>
-            <a class="btn secondary" href="#program">Посмотреть программу</a>
-          </div>
-          <div class="stats" aria-label="Ключевые преимущества">
-            <div class="stat"><strong>2–3 часа</strong><span>готовый формат для офиса, ретрита или выезда</span></div>
-            <div class="stat"><strong>15–120</strong><span>участников в одной группе</span></div>
-            <div class="stat"><strong>100%</strong><span>фокус на восстановлении, а не на соревновании</span></div>
-          </div>
-        </div><div class="hero-card" aria-label="Иллюстрация практики расслабления под живую музыку">
-      <div class="sun"></div>
-      <div class="music-orbits">
-        <span class="orbit"></span>
-        <span class="orbit"></span>
-        <span class="orbit"></span>
-      </div>
-      <div class="instrument-tag tag-1">● ханг</div>
-      <div class="instrument-tag tag-2">● чаши</div>
-      <div class="instrument-tag tag-3">● хрустальная арфа</div>
-      <div class="person">
-        <div class="head"></div>
-        <div class="body"></div>
-        <div class="leg1"></div>
-        <div class="leg2"></div>
-        <div class="mat"></div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section id="format">
-  <div class="container">
-    <div class="section-head">
-      <h2>Это не просто йога и не просто концерт</h2>
-      <p>Это мягко выстроенный путь: сначала тело получает здоровую нагрузку и выпускает напряжение, затем нервная система переходит в режим восстановления через покой, дыхание и живой акустический звук.</p>
-    </div>
+<header>
+<div class="container nav">
+<div class="logo">Sound Rest</div>
 
-    <div class="cards">
-      <article class="card">
-        <div class="icon">↯</div>
-        <h3>Крепкая йога без эзотерики</h3>
-        <p>Динамичная, доступная практика для офисной команды: мобилизация, вытяжение, работа с дыханием и безопасная физическая нагрузка.</p>
-      </article>
-      <article class="card">
-        <div class="icon">◎</div>
-        <h3>Понятная наука о стрессе</h3>
-        <p>Объясняем, почему устают шея, плечи, спина и голова, как стресс связан с мышечным тонусом и почему телу нужен осознанный сброс нагрузки.</p>
-      </article>
-      <article class="card">
-        <div class="icon">♫</div>
-        <h3>Живая музыка для глубокого отдыха</h3>
-        <p>После практики участники ложатся в шавасану и час отдыхают под звонницу, ханги, чаши, бубны и хрустальную арфу.</p>
-      </article>
-    </div>
-  </div>
-</section>
+<div class="menu">
+<a href="#">О формате</a>
+<a href="#">Программа</a>
+<a href="#">Музыка</a>
+<a href="#">Контакты</a>
+</div>
+</div>
+</header>
 
-<section class="program" id="program">
-  <div class="container">
-    <div class="section-head">
-      <h2>Как проходит мероприятие</h2>
-      <p>Формат можно адаптировать под офис, загородный отель, корпоративный ретрит, конференцию или выездной день команды.</p>
-    </div>
+<section class="hero">
 
-    <div class="timeline">
-      <div class="step">
-        <div class="time">15 мин</div>
-        <div>
-          <h3>Вход в формат</h3>
-          <p>Коротко настраиваем группу, объясняем правила безопасности и переводим внимание из рабочих задач в тело.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="time">45–60 мин</div>
-        <div>
-          <h3>Крепкая телесная практика</h3>
-          <p>Последовательность из йоги, функциональной мобилизации и дыхания: достаточно интенсивно, чтобы почувствовать тело, но без спортивной гонки.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="time">15 мин</div>
-        <div>
-          <h3>Мини-лекция: зажимы, усталость, нервная система</h3>
-          <p>На простом языке рассказываем, как длительное сидение, стресс и постоянная концентрация повышают тонус мышц и перегружают внимание.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="time">60 мин</div>
-        <div>
-          <h3>Шавасана под живую этническую музыку</h3>
-          <p>Участники лежат, восстанавливаются и погружаются в звук. Музыка создаётся вживую и мягко ведёт состояние от напряжения к покою.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="time">10 мин</div>
-        <div>
-          <h3>Мягкое возвращение</h3>
-          <p>Завершаем практику, даём простые инструменты для самостоятельного восстановления в рабочие дни.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<div class="container hero-grid">
 
-<section id="science">
-  <div class="container">
-    <div class="section-head">
-      <h2>Почему это работает</h2>
-      <p>Мы говорим о восстановлении языком тела и физиологии: без мистики, давления и обещаний «чудесного исцеления».</p>
-    </div>
+<div>
 
-    <div class="science-grid">
-      <div class="quote-card">
-        <h3>После нагрузки телу легче отпустить контроль</h3>
-        <p>Когда человек безопасно двигается, дышит и чувствует мышцы, внимание переключается с бесконечного анализа на телесные ощущения. Это помогает выйти из режима «надо срочно решать».</p>
-        <div class="sound-waves" aria-label="Звуковые волны">
-          <span class="wave"></span><span class="wave"></span><span class="wave"></span><span class="wave"></span><span class="wave"></span><span class="wave"></span><span class="wave"></span><span class="wave"></span>
-        </div>
-      </div>
+<h1>
+Команда устала.<br>
+Мы привезём<br>
+ей глубокий выдох.
+</h1>
 
-      <div class="accordion-like">
-        <div class="science-item">
-          <strong>Движение снижает ощущение скованности</strong>
-          <span>Мягкая силовая нагрузка, вытяжение и мобилизация помогают вернуть подвижность участкам, которые обычно «застревают» от сидячей работы: шее, плечам, грудному отделу, пояснице и тазу.</span>
-        </div>
-        <div class="science-item">
-          <strong>Дыхание влияет на уровень возбуждения нервной системы</strong>
-          <span>Удлинённый выдох, паузы и спокойный ритм дыхания помогают телу переходить от мобилизации к восстановлению.</span>
-        </div>
-        <div class="science-item">
-          <strong>Ритм и тембр музыки помогают синхронизироваться</strong>
-          <span>Повторяющиеся акустические паттерны, низкие обертона и плавная динамика создают предсказуемую среду. Мозгу не нужно постоянно анализировать новые сигналы — легче расслабиться.</span>
-        </div>
-        <div class="science-item">
-          <strong>Шавасана закрепляет эффект</strong>
-          <span>После физической части глубокий покой воспринимается ярче: мышцы уже поработали, тело согрето, внимание собрано, и отдых становится не абстрактной идеей, а реальным состоянием.</span>
-        </div>
-      </div>
-    </div>
-  </div>
+<p>
+Крепкая йога, понятная наука о стрессе и час шавасаны под живую этническую музыку.
+</p>
+
+<div class="buttons">
+<a href="#" class="btn btn-dark">Обсудить выезд</a>
+<a href="#" class="btn btn-light">Как это проходит</a>
+</div>
+
+</div>
+
+<div class="circle"></div>
+
+</div>
 </section>
 
 <section>
-  <div class="container">
-    <div class="section-head">
-      <h2>Инструменты живого звучания</h2>
-      <p>Мы используем акустические инструменты с богатым спектром обертонов. Они не забивают внимание, а создают объёмное звуковое пространство для восстановления.</p>
-    </div>
 
-    <div class="instruments">
-      <div class="instrument">
-        <div class="instrument-visual"><div class="bell"></div></div>
-        <div><h3>Звонница</h3><p>Чистые переливы и мягкие высокие частоты.</p></div>
-      </div>
-      <div class="instrument">
-        <div class="instrument-visual"><div class="circle-instrument"></div></div>
-        <div><h3>Ханги</h3><p>Тёплый металлический тембр и медитативный ритм.</p></div>
-      </div>
-      <div class="instrument">
-        <div class="instrument-visual"><div class="harp"></div></div>
-        <div><h3>Хрустальная арфа</h3><p>Прозрачные вибрации и ощущение пространства.</p></div>
-      </div>
-      <div class="instrument">
-        <div class="instrument-visual"><div class="drum"></div></div>
-        <div><h3>Бубны</h3><p>Ритм, заземление и телесное ощущение пульса.</p></div>
-      </div>
-      <div class="instrument">
-        <div class="instrument-visual"><div class="bowl"></div></div>
-        <div><h3>Чаши</h3><p>Долгие обертоны и мягкое звуковое поле.</p></div>
-      </div>
-    </div>
-  </div>
+<div class="container">
+
+<div class="center">
+
+<h2>
+Телесный отдых,<br>
+который реально чувствуется
+</h2>
+
+<div class="subtitle">
+Не просто йога. Это целый опыт расслабления через движение, дыхание и живой звук.
+</div>
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+<div class="number">1</div>
+<h3>Крепкая практика</h3>
+<p>
+Мягкая, но ощутимая нагрузка для спины, шеи, плеч и таза.
+</p>
+</div>
+
+<div class="card">
+<div class="number">2</div>
+<h3>Научное объяснение</h3>
+<p>
+Понятно рассказываем, как стресс живёт в теле и почему появляются зажимы.
+</p>
+</div>
+
+<div class="card">
+<div class="number">3</div>
+<h3>Живая музыка</h3>
+<p>
+Шавасана под ханги, чаши, бубны, звонницу и хрустальную арфу.
+</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section class="soft">
+
+<div class="container split">
+
+<div class="round"></div>
+
+<div class="text">
+
+<h2>
+Не разогнать,<br>
+а восстановить
+</h2>
+
+<p>
+Обычные тимбилдинги требуют ещё больше энергии.
+</p>
+
+<p>
+Наш формат наоборот помогает команде сбросить напряжение и по-настоящему отдохнуть.
+</p>
+
+<div class="quote">
+«Люди приходят уставшими, а уходят с ощущением — я наконец выдохнул.»
+</div>
+
+</div>
+
+</div>
+
 </section>
 
 <section>
-  <div class="container">
-    <div class="result">
-      <div>
-        <h2>Что получает команда</h2>
-        <p class="lead">Участники уходят не «заряженными на рывок», а действительно отдохнувшими: с ясной головой, расслабленным телом и ощущением общего прожитого опыта.</p>
-      </div>
-      <div class="check-list">
-        <div class="check">Снижается телесное напряжение после долгой работы за компьютером.</div>
-        <div class="check">Появляется общее безопасное переживание вне рабочих ролей.</div>
-        <div class="check">Команда отдыхает вместе, без алкоголя, соревнования и неловких активностей.</div>
-        <div class="check">Формат запоминается: это необычно, красиво и по-настоящему восстанавливает.</div>
-      </div>
-    </div>
-  </div>
+
+<div class="container">
+
+<div class="center">
+
+<h2>Как проходит выезд</h2>
+
+<div class="subtitle">
+От камерной встречи до большого корпоративного ретрита.
+</div>
+
+</div>
+
+<div class="program">
+
+<div class="step">
+<div class="time">10–15 мин</div>
+<div>
+<h3>Мягкий вход</h3>
+<p>
+Объясняем формат и снимаем тревогу.
+</p>
+</div>
+</div>
+
+<div class="step">
+<div class="time">45–60 мин</div>
+<div>
+<h3>Йога и мобилизация</h3>
+<p>
+Дыхание, движение и работа с телом.
+</p>
+</div>
+</div>
+
+<div class="step">
+<div class="time">15 мин</div>
+<div>
+<h3>Мини-лекция</h3>
+<p>
+Как стресс влияет на нервную систему и мышцы.
+</p>
+</div>
+</div>
+
+<div class="step">
+<div class="time">60 мин</div>
+<div>
+<h3>Шавасана и музыка</h3>
+<p>
+Участники лежат и отдыхают под живые инструменты.
+</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
 </section>
 
-<section class="cta" id="contact">
-  <div class="container">
-    <div class="cta-box">
-      <h2>Привезём вашей команде практику глубокого восстановления</h2>
-      <p>Подберём длительность, состав музыкантов, уровень физической нагрузки и формат под вашу площадку, количество участников и цель мероприятия.</p>
-      <a class="btn" href="mailto:hello@example.com?subject=Заявка%20на%20выездной%20тимбилдинг">Оставить заявку</a>
-    </div>
-  </div>
+<section class="dark">
+
+<div class="container">
+
+<div class="center">
+
+<h2>
+Почему это работает
+</h2>
+
+<div class="subtitle">
+Без мистики — через внимание, ритм и нервную систему.
+</div>
+
+</div>
+
+<div class="grid2">
+
+<div class="dark-card">
+<h3>После движения легче расслабиться</h3>
+<p>
+Тело уже включилось в ощущения и перестаёт жить только в голове.
+</p>
+</div>
+
+<div class="dark-card">
+<h3>Ритм успокаивает мозг</h3>
+<p>
+Повторяющиеся звуки снижают внутренний шум.
+</p>
+</div>
+
+<div class="dark-card">
+<h3>Обертоны создают объём</h3>
+<p>
+Чаши и ханги создают ощущение глубокого пространства.
+</p>
+</div>
+
+<div class="dark-card">
+<h3>Команда отдыхает вместе</h3>
+<p>
+Без соревнования и давления — только общий спокойный опыт.
+</p>
+</div>
+
+</div>
+
+</div>
+
 </section>
 
-  </main>  <footer>
-    <div class="container footer-inner">
-      <div>© Reset Team — выездные практики восстановления</div>
-      <div>Йога · Наука о стрессе · Живая этническая музыка</div>
-    </div>
-  </footer>
+<section>
+
+<div class="container">
+
+<div class="center">
+
+<h2>Инструменты</h2>
+
+<div class="subtitle">
+Живой акустический сет для глубокого расслабления.
+</div>
+
+</div>
+
+<div class="instruments">
+
+<div class="instrument">
+<div class="icon"></div>
+<h3>Ханги</h3>
+<p>Тёплый медитативный ритм</p>
+</div>
+
+<div class="instrument">
+<div class="icon"></div>
+<h3>Чаши</h3>
+<p>Длинные обертоны</p>
+</div>
+
+<div class="instrument">
+<div class="icon"></div>
+<h3>Бубны</h3>
+<p>Глубокий пульс</p>
+</div>
+
+<div class="instrument">
+<div class="icon"></div>
+<h3>Арфа</h3>
+<p>Воздушное звучание</p>
+</div>
+
+<div class="instrument">
+<div class="icon"></div>
+<h3>Звонница</h3>
+<p>Чистые переливы</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="contacts">
+
+<div class="container">
+
+<div class="contact-box">
+
+<h2>
+Хотите такой формат для своей команды?
+</h2>
+
+<p>
+Обсудим площадку, количество участников и формат выезда.
+</p>
+
+<div class="contact-buttons">
+
+<a href="#" class="btn btn-dark">
+Telegram
+</a>
+
+<a href="#" class="btn btn-light">
+Email
+</a>
+
+</div>
+
+<div>
+Москва • выезды по России
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+Sound Rest • выездные практики расслабления
+</footer>
+
 </body>
 </html>
